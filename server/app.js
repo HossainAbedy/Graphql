@@ -15,11 +15,16 @@ mongoose.connect(mongooseURL,{ useNewUrlParser: true, useUnifiedTopology: true }
         .then(() => console.log("Connected to MongoDB Atlas"))
         .catch(err => console.log("Error: ", err.message));
 
+//serve Graphql path from server
 app.use('/graphql',graphqlHTTP({
     schema:schema,
     graphiql:true,
 }))
 
+//server static files
+//app.use(express.static('public'))
+
+//running server on port
 app.listen(5000,() => {
     console.log("Listening for requests in port 5000");
 });
