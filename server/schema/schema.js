@@ -118,7 +118,29 @@ const Mutation = new GraphQLObjectType({
                 });
                 return book.save()
             }
-        }
+        },
+        deleteBook:{
+            type:BookType,
+            args:{
+                id:{type: new GraphQLNonNull(GraphQLID)}
+            },
+            resolve(parentValue, args){
+                // return axios.delete('http://localhost:3000/customers/'+args.id)
+                // .then(res => res.data);
+            }
+        },
+        editBook:{
+            type:BookType,
+            args:{
+                id:{type: new GraphQLNonNull(GraphQLID)},
+                name: {type: GraphQLString},
+                genre: {type: GraphQLString},
+            },
+            resolve(parentValue, args){
+                // return axios.patch('http://localhost:3000/customers/'+args.id, args)
+                // .then(res => res.data);
+            }
+        },
     }
 })
 
